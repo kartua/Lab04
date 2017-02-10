@@ -15,7 +15,7 @@ public class Flight implements Comparable<Flight> {
 
     private String source, destination, airline;
     private GregorianCalendar departure, arrival;
-    private static int mode = 1;
+    private static int mode = 1;// initialize mode to use in compareTo
 
     //Constructor 
     public Flight(String s, String des, String al, GregorianCalendar dep,
@@ -34,9 +34,7 @@ public class Flight implements Comparable<Flight> {
         destination = des;
         airline = al;
     }
-    public void setMode(int m){
-        mode = m;
-    }
+
     @Override
     public String toString() {
         String output;
@@ -53,11 +51,12 @@ public class Flight implements Comparable<Flight> {
         }
         return output + "\n";
     }
+    // setMode: Promp user to select mode to use compareTo
     private static void setMode(){
-        Scanner setMode = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         System.out.println("Please select criteria.\n1 For source city"
                 + "\n2 For departure date and time ");
-        mode = setMode.nextInt();
+        mode = scan.nextInt();
     }
 
     // create a string to compare flight
@@ -76,15 +75,12 @@ public class Flight implements Comparable<Flight> {
     // Forexamples, same airline
     public int compareTo(Flight target) {
         if(mode == 1){
-            if (destination.equals(target.destination)) {
+            if (destination.equals(target.destination)) 
                 return source.compareToIgnoreCase(target.source);
-            } //compare base on source
-            else {
-                return source.compareToIgnoreCase(target.source);
-            }
-        }else if (mode == 2){
-            return departure.compareTo(target.departure);
-        }else return 0;
+             //compare base on source
+            else return source.compareToIgnoreCase(target.source);
+        }else if (mode == 2)return departure.compareTo(target.departure);
+        else return 0;
     }
     //CompareTo call flightStr() to compare 
 //    public int compareTo(Flight target) {
@@ -143,7 +139,9 @@ public class Flight implements Comparable<Flight> {
         }
         return found;
     }
-
+    
+    // insertionSort: add setMode() at the first line to select mode before
+    // sorting.
     public static <T extends Comparable<T>> void insertionSort(T[] data)
     {
         setMode();
@@ -159,7 +157,6 @@ public class Flight implements Comparable<Flight> {
                 data[position] = data[position-1];
                 position--;
             }
-			
             data[position] = key;
         }
     }
