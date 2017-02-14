@@ -31,7 +31,7 @@ public class FlightDriver {
         Flight target2 = new Flight("Bangkok", "Hongkong", "Thai Airlines",
                             new GregorianCalendar(20017, 4, 1, 13, 0, 0),
                             new GregorianCalendar(20017, 4, 1, 18, 20, 0));
-
+ 
 //        Flight.linearSearch(flights, target1);
 //        Sorting.insertionSort(flights);
 //        for(Flight f : flights) System.out.println(f);
@@ -41,3 +41,4 @@ public class FlightDriver {
         for(Flight f: flights) System.out.println(f);
     }
 }
+ 

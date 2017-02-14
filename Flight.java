@@ -81,13 +81,11 @@ public class Flight implements Comparable<Flight> {
 
     }
     public static void sort(Flight[] data){
-    setMode();
-    Sorting.insertionSort(data);
+        setMode();
+        Sorting.insertionSort(data);
     }
 
-    // compare check destiation first then check source
-    // *************** CONTAIN BUGS **************
-    // Forexamples, same airline
+    @Override
     public int compareTo(Flight target) {
         switch (mode) {
             case 1:
@@ -98,83 +96,4 @@ public class Flight implements Comparable<Flight> {
                 return 0;
         }
     }
-    //CompareTo call flightStr() to compare 
-//    public int compareTo(Flight target) {
-//        return flightStr().compareTo(target.flightStr());
-//    }
-//
-//    // linear search 
-//    // Use class T so the method can use with any input
-//    // extneds Comparable<T> to use compareTo method of it own class(Polymorphism)
-//    public static <T extends Comparable<T>>
-//            boolean linearSearch(T[] data, T target) {
-//        int i = 0;
-//        boolean found = false;
-//        while (i <= data.length - 1 && !found) {
-//            if (data[i].compareTo(target) == 0) {
-//                System.out.println("**********THE FLGHT IS FOUND**********\n"
-//                        + data[i].toString());
-//                found = true;
-//            }
-//            i++;
-//        }
-//        //Display "not found" if the flight is not found
-//        if (!found) {
-//            System.out.println("**********THE FLIGHT IS NOT FOUND**********\n"
-//                    + target.toString());
-//        }
-//        return found;
-//    }
-//
-//    // Use class T so the method can use with any input
-//    // extneds Comparable<T> to use compareTo method of it own class(Polymorphism)
-//    public static <T extends Comparable<T>>
-//            boolean binarySearch(T[] data, T target) {
-//        insertionSort(data);
-//        int low = 0;
-//        int high = data.length - 1;
-//        int mid = (low + high) / 2;
-//        boolean found = false;
-//        while (low <= high && !found) {
-//            if (data[mid].compareTo(target) == 0) {
-//                System.out.println("**********THE FLGHT IS FOUND**********\n"
-//                        + data[mid].toString());
-//                found = true;
-//            } else if (data[mid].compareTo(target) < 0) {// mid<target
-//                low = mid + 1; // cut the hlaf that is lower than target out
-//                mid = (low + high) / 2;
-//            } else { // mid>target
-//                high = mid - 1;// cut the hlaf that is higher than target out
-//                mid = (low + high) / 2;
-//            }
-//        }
-//        //Display "not found" if the flight is not found
-//        if (!found) {
-//            System.out.println("**********THE FLIGHT IS NOT FOUND**********\n"
-//                    + target.toString());
-//        }
-//        return found;
-//    }
-    
-    // insertionSort: add setMode() at the first line to select mode before
-    // sorting.
-//    public static <T extends Comparable<T>> void insertionSort(T[] data)
-//    {
-//        setMode();
-//        
-//        for (int index = 1; index < data.length; index++)
-//        {
-//            T key = data[index];
-//            int position = index;
-//			
-//            // shift larger values to the right 
-//            while (position > 0 && data[position-1].compareTo(key) > 0)
-//            {
-//                data[position] = data[position-1];
-//                position--;
-//            }
-//            data[position] = key;
-//        }
-//    }
-
 }
