@@ -37,7 +37,7 @@ public class FlightDriver {
 //        for(Flight f : flights) System.out.println(f);
 //        Flight.binarySearch(flights, target2);
 
-        Flight.insertionSort(flights);
+        Flight.sort(flights);
         for(Flight f: flights) System.out.println(f);
     }
 }
